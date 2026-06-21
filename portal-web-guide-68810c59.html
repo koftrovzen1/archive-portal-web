@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资源索引 · pg模拟器 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fde6d9 0%, #fcddc9 40%, #f9d3bc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #3a2c25;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.4rem 0 3.6rem;
+            width: 100%;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 250, 245, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 0.8rem 2rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 18px rgba(180, 110, 60, 0.12);
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.3px;
+            color: #7f4e3a;
+            background: #fff1e6;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.95rem;
+            color: #5b3f32;
+        }
+
+        .nav-links span {
+            cursor: default;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+            padding-bottom: 2px;
+        }
+
+        .nav-links span:hover {
+            border-bottom-color: #b58062;
+        }
+
+        /* hero 区块 — 信息索引标题 */
+        .hero {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 36px;
+            padding: 3rem 2.8rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 16px 40px -12px rgba(140, 80, 40, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 650;
+            letter-spacing: -0.3px;
+            color: #4f2f21;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #6f4d3a;
+            max-width: 640px;
+            border-left: 4px solid #cb9a7a;
+            padding-left: 1.2rem;
+        }
+
+        /* 核心介绍 — 简洁卡片 */
+        .feature-summary {
+            background: white;
+            border-radius: 28px;
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.6rem;
+            box-shadow: 0 8px 24px rgba(150, 90, 50, 0.08);
+        }
+
+        .feature-summary h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #543729;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-summary p {
+            margin-bottom: 1rem;
+            color: #3f2f26;
+        }
+
+        .feature-summary strong {
+            color: #7d513b;
+        }
+
+        /* 三个场景模块 */
+        .scenes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .scene-card {
+            background: white;
+            border-radius: 26px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 6px 18px rgba(160, 90, 45, 0.08);
+            transition: transform 0.1s ease, box-shadow 0.2s;
+            border: 1px solid #f7e8dd;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 28px -8px rgba(130, 70, 30, 0.12);
+        }
+
+        .scene-card .icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+            background: #fbeee5;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            border-radius: 16px;
+        }
+
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #4f3427;
+            margin-bottom: 0.5rem;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #4d3a2e;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            margin-top: 0.8rem;
+            background: #faece2;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            color: #764f38;
+            font-weight: 500;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-section {
+            background: #ffffffec;
+            border-radius: 30px;
+            padding: 2.2rem 2.5rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 8px 20px rgba(150, 80, 35, 0.06);
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4f3225;
+            margin-bottom: 1.4rem;
+        }
+
+        .faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eedbcf;
+        }
+
+        .faq-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #5a3c2b;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-a {
+            color: #4f3b30;
+            font-size: 0.95rem;
+        }
+
+        .faq-a a {
+            color: #86573e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b68566;
+            transition: border-bottom 0.15s;
+        }
+
+        .faq-a a:hover {
+            border-bottom: 2px solid #86573e;
+        }
+
+        /* 底部提示 — 轻量 */
+        .footer-note {
+            background: #fcf3eb;
+            border-radius: 40px;
+            padding: 1rem 2rem;
+            text-align: center;
+            color: #644b3a;
+            font-size: 0.9rem;
+            border: 1px solid #edceba;
+        }
+
+        .footer-note a {
+            color: #7b513a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #c69678;
+        }
+
+        .footer-note a:hover {
+            border-bottom-width: 2px;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .nav {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .feature-summary,
+            .faq-section {
+                padding: 1.6rem 1.4rem;
+            }
+
+            .scenes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .nav-brand {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 导航 -->
+    <div class="nav">
+        <div class="nav-brand">索引·pg模拟器</div>
+        <div class="nav-links">
+            <span>概览</span>
+            <span>场景</span>
+            <span>说明</span>
+            <span>资源</span>
+        </div>
+    </div>
+
+    <!-- hero 信息索引标题 -->
+    <div class="hero">
+        <h1>资料整理 · 场景索引</h1>
+        <div class="sub">
+            面向 <strong>pg模拟器</strong> 的轻量导航页，聚合三种典型应用场景与常见疑问摘要，方便快速检索信息。
+        </div>
+    </div>
+
+    <!-- 核心介绍 (从资料索引角度) -->
+    <div class="feature-summary">
+        <h2>信息索引说明</h2>
+        <p>本页围绕 <strong>pg模拟器</strong> 整理了一套结构化的参考入口。不同于功能罗列，这里侧重将分散的实践片段归为三类典型场景，同时附上使用中频繁出现的说明点，便于按需查阅。</p>
+        <p>内容来源包括公开文档与用户交流摘要，经过筛选与分类，保留相对稳定的信息。对于更完整的版本更新、环境配置细节，建议直接查阅相关项目仓库。</p>
+        <p style="margin-bottom: 0;">索引本身不提供下载或安装包，仅作指引。如果你需要寻找 <strong>pg模拟器</strong> 的获取方式或最新动态，可通过下方场景卡片中的链接进一步浏览。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+        <div class="scene-card">
+            <div class="icon">📋</div>
+            <h3>环境准备与运行</h3>
+            <p>依赖安装、配置文件模板、常见启动参数。适用于初次搭建或迁移运行环境，整理了几组已验证的基础设置。</p>
+            <span class="tag">配置参考</span>
+        </div>
+        <div class="scene-card">
+            <div class="icon">🧩</div>
+            <h3>功能对照与测试</h3>
+            <p>模拟器支持的接口子集、行为差异说明、以及部分测试用例摘要。适合需要比对功能边界或做兼容验证的场景。</p>
+            <span class="tag">接口摘要</span>
+        </div>
+        <div class="scene-card">
+            <div class="icon">📁</div>
+            <h3>数据与日志管理</h3>
+            <p>持久化存储位置、日志级别调整、数据导出提示。面向希望自定义数据目录或排查运行记录的用户。</p>
+            <span class="tag">运维参考</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section">
+        <h2>常见说明摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">pg模拟器 与早期版本的主要差异？</div>
+            <div class="faq-a">新版调整了配置结构，部分参数改用独立文件管理。建议迁移前对照变更日志。更多细节可参考 <a href="https://portal-web-pg.com">pg模拟器</a> 中提供的文档索引。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">是否需要特定系统环境？</div>
+            <div class="faq-a">主流 Linux 发行版及 macOS 均可运行，Windows 下可使用 WSL 或 Docker 方式。相关基础镜像与依赖在社区维护列表中有记录。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">如何获取较新的版本信息？</div>
+            <div class="faq-a">发布记录和更新日志通常汇总在项目主站。你可以通过 <a href="https://portal-web-pg.com">pg模拟器</a> 的发布页面跟踪版本号与改动摘要。</div>
+        </div>
+    </div>
+
+    <!-- 底部提示 -->
+    <div class="footer-note">
+        <span>整理自公开资料 · 如有信息变动，以 <a href="https://portal-web-pg.com">pg模拟器</a> 官方发布为准。</span>
+    </div>
+
+</div>
+</body>
+</html>
